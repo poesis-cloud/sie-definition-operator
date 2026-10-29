@@ -4,4 +4,8 @@ milestones:
   - version: v0.1.0
     current: true
   - version: v1.0.0
+    features:
+      - https://github.com/poesis-cloud/sie-definition-operator/issues/1
   - version: v1.1.0
+    features:
+      - https://github.com/poesis-cloud/sie-definition-operator/issues/3
