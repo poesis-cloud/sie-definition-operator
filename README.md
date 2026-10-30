@@ -441,3 +441,10 @@ Execute a Mechanism.
 ### OpenAPI
 
 Available at `/api-docs` (JSON) and `/swagger-ui.html` (UI) when the application is running.
+
+<!-- roadmap:start -->
+## Roadmap
+
+![Roadmap](docs/roadmap.svg)
+
+<!-- roadmap:end -->
