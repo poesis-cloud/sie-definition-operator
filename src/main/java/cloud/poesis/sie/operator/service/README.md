@@ -2,7 +2,7 @@
 
 > **Package**: `cloud.poesis.sie.operator.service` — **7 files** (1 interface + 4 `@Service`/`@Component` beans + 2 dispatch implementations)
 > managing mechanism frame resolution, Starlark rule execution, input
-> validation, and effector dispatching for the SIE Operator.
+> validation, and effector dispatching for the SIE Definition Operator.
 
 ---
 

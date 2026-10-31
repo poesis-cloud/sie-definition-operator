@@ -15,7 +15,7 @@ class OpenApiConfig {
     return new OpenAPI()
         .info(
             new Info()
-                .title("SIE Operator API")
+                .title("SIE Definition Operator API")
                 .description(
                     "Systemic Intelligence Engine — Operator. Resolves mechanism topologies, "
                         + "executes Starlark governance rules, and dispatches effects.")
@@ -24,6 +24,7 @@ class OpenApiConfig {
                 .license(
                     new License()
                         .name("Business Source License 1.1")
-                        .url("https://github.com/poesis-cloud/sie-operator/blob/main/LICENSE")));
+                        .url(
+                            "https://github.com/poesis-cloud/sie-definition-operator/blob/main/LICENSE")));
   }
 }

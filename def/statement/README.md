@@ -1,6 +1,6 @@
-# SIE Operator — Statement Definitions
+# SIE Definition Operator — Statement Definitions
 
-GSM statement definitions for the SIE Operator's identity and protocol archetypes.
+GSM statement definitions for the SIE Definition Operator's identity and protocol archetypes.
 
 ## Operator Identity
 

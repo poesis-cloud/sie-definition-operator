@@ -19,9 +19,9 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
 /**
- * Registers the SIE Operator's own Structure, Mechanism, Receptor, and Effector ascriptions on the
- * Definition Manager at application startup. Idempotent: checks for existing ascriptions before
- * creating new ones.
+ * Registers the SIE Definition Operator's own Structure, Mechanism, Receptor, and Effector
+ * ascriptions on the Definition Manager at application startup. Idempotent: checks for existing
+ * ascriptions before creating new ones.
  */
 @Component
 @ConditionalOnProperty(name = "op.bootstrap.enabled", havingValue = "true", matchIfMissing = true)
@@ -60,7 +60,7 @@ public class StructureSeedRunner implements ApplicationRunner {
 
   @Override
   public void run(ApplicationArguments args) {
-    log.info("Bootstrapping SIE Operator identity on Definition Manager...");
+    log.info("Bootstrapping SIE Definition Operator identity on Definition Manager...");
 
     String baseArchetypeUri = resolveBaseArchetypeUri("Archetype");
     String structureArchetypeUri = resolveBaseArchetypeUri("Structure");
@@ -109,7 +109,7 @@ public class StructureSeedRunner implements ApplicationRunner {
         ensurePort("EFFECTOR", effectorArchetypeUri, mechanismAscId, operationResponseArchUri);
 
     log.info(
-        "SIE Operator identity registered — structure={}, mechanism={}, receptor={}, effector={}",
+        "SIE Definition Operator identity registered — structure={}, mechanism={}, receptor={}, effector={}",
         structureAscId,
         mechanismAscId,
         receptorAscId,

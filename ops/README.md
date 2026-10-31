@@ -1,4 +1,4 @@
-# SIE Operator deployables
+# SIE Definition Operator deployables
 
 This folder contains ops/runtime assets for the Operator service.
 
@@ -13,8 +13,8 @@ Chart path:
 Install with defaults:
 
 ```bash
-helm upgrade --install sie-operator \
-  sie/sie-operator/ops/helm \
+helm upgrade --install sie-definition-operator \
+  sie/sie-definition-operator/ops/helm \
   -n sie --create-namespace
 ```
 

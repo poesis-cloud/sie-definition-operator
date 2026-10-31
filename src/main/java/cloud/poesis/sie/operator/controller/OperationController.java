@@ -22,7 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/operations")
-@Tag(name = "Operations", description = "Execute mechanism operations against the SIE Operator")
+@Tag(
+    name = "Operations",
+    description = "Execute mechanism operations against the SIE Definition Operator")
 public class OperationController {
 
   private final OperationService operationService;

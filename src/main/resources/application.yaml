@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: sie-operator
+    name: sie-definition-operator
   security:
     oauth2:
       resourceserver:

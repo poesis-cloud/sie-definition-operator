@@ -2,7 +2,7 @@
   "$schema": "gsmarc://gsm/Archetype/v1",
   "$id": "gsmarc://ops/OperationResponse/v1",
   "title": "OperationResponse",
-  "description": "SIE Operator effector archetype — operation response contract. Defines the shape of an operation outcome emitted by the operator's run-operation mechanism.",
+  "description": "SIE Definition Operator effector archetype — operation response contract. Defines the shape of an operation outcome emitted by the operator's run-operation mechanism.",
   "type": "object",
   "required": [ "success" ],
   "properties": {
