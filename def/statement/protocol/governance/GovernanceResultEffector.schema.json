@@ -3,7 +3,7 @@
   "$ref": "gsmarc://gsm/Effector/v1",
   "$id": "gsmarc://ops/protocols/governance/GovernanceResultEffector/v1",
   "title": "GovernanceResultEffector",
-  "description": "Effector archetype for governance result emission. Typed by resultType (governance outcome verb). A governance result effector emits evaluation outcomes back into the governance fabric. Source: ITIP Meta-Governance Ontology; GSM Effector semantics.",
+  "description": "Effector archetype for governance result emission. Typed by resultType (governance outcome verb). A governance result effector emits evaluation outcomes back into the governance fabric. Source: OIP Meta-Governance Ontology; GSM Effector semantics.",
   "type": "object",
   "required": [
     "resultType"
@@ -16,7 +16,7 @@
         "COMPLIANCE_RESULT",
         "SOURCING_RESULT"
       ],
-      "description": "Governance result discriminator. Identity-bound: effectors of the same Definition always emit the same result type. Source: ITIP meta-governance.",
+      "description": "Governance result discriminator. Identity-bound: effectors of the same Definition always emit the same result type. Source: OIP meta-governance.",
       "$gsm:identityBound": true,
       "$gsm:queryable": true
     }

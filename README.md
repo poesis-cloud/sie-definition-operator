@@ -117,14 +117,14 @@ All protocols are **structurally identical**: same dispatcher SPI (`MechanismEff
 **Ownership split** (decided during the GSM Sourcer / SBAS design phase):
 
 - **Operator-internal protocols** live in this repo under `def/statement/protocol/` — Relay (in-memory causal propagation) and Governance (DM ↔ Operator events). These are part of the Operator runtime contract.
-- **Application protocols** (HTTP, Kafka, AMQP, gRPC, GraphQL, JDBC, WebSocket) are owned by **ITIP** under `gsm-ontology/ontologies/{family}/` (the standalone, public `gsm-ontology` repo). They describe how applications interact with the world and are catalogued alongside other ITIP ontologies (TOGAF, ISO 25000, GDPR…). The Operator vendors HTTP at build time via a Maven `<resource>` directive pointing to ITIP, so `StructureSeedRunner` can still register them at startup.
+- **Application protocols** (HTTP, Kafka, AMQP, gRPC, GraphQL, JDBC, WebSocket) are owned by **OIP** under `gsm-ontology/ontologies/{family}/` (the standalone, public `gsm-ontology` repo). They describe how applications interact with the world and are catalogued alongside other OIP ontologies (TOGAF, ISO 25000, GDPR…). The Operator vendors HTTP at build time via a Maven `<resource>` directive pointing to OIP, so `StructureSeedRunner` can still register them at startup.
 
 | Protocol                                        | Owner        | Boundary           | Analogy            | Description                                                                                           |
 | ----------------------------------------------- | ------------ | ------------------ | ------------------ | ----------------------------------------------------------------------------------------------------- |
-| **HTTP**                                        | ITIP         | Network (external) | Syscall / FFI      | Crosses the runtime boundary to reach external targets via HTTP requests/responses.                   |
+| **HTTP**                                        | OIP         | Network (external) | Syscall / FFI      | Crosses the runtime boundary to reach external targets via HTTP requests/responses.                   |
 | **Relay**                                       | sie-operator | In-memory (native) | Causal propagation | Propagates causal signals between mechanisms within an operation chain — no network boundary crossed. |
 | **Governance**                                  | sie-operator | In-memory (native) | DM ↔ Operator     | Governance event/result exchange between Definition Manager and Operator.                             |
-| **Kafka, AMQP, gRPC, GraphQL, JDBC, WebSocket** | ITIP         | Network (external) | Various            | Reserved ontology directories; archetype quads to be authored when first sourced.                     |
+| **Kafka, AMQP, gRPC, GraphQL, JDBC, WebSocket** | OIP         | Network (external) | Various            | Reserved ontology directories; archetype quads to be authored when first sourced.                     |
 
 ### Archetype Quad Pattern
 
@@ -268,7 +268,7 @@ sie-operator/
 │       └── governance/                 # Governance event/result archetype family (8 files)
 │
 │   # NOTE: Application protocols (HTTP, Kafka, AMQP, gRPC, GraphQL, JDBC,
-│   # WebSocket) are owned by ITIP — see gsm-ontology/ontologies/{family}/.
+│   # WebSocket) are owned by OIP — see gsm-ontology/ontologies/{family}/.
 │   # HTTP is vendored to the operator classpath via a Maven <resource>
 │   # directive in pom.xml so StructureSeedRunner can register it at startup.
 │

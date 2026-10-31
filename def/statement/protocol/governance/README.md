@@ -1,6 +1,6 @@
 # Governance Protocol
 
-Governance protocol statements for the ITIP meta-governance ontology.
+Governance protocol statements for the OIP meta-governance ontology.
 
 ## Overview
 

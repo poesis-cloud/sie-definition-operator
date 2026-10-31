@@ -24,15 +24,15 @@ import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 
 /**
- * Integration test exercising the full CP execution flow with ITIP governance artifacts
+ * Integration test exercising the full CP execution flow with OIP governance artifacts
  * (DIRECTIVE_NORM_OPERATIONALIZATION mechanism) against a mocked Definition Manager.
  *
  * <p>Simulates the complete frame resolution: Mechanism → Receptor (AppraisalTrigger) → Effector
- * (AppraisalFinding) → Archetype schemas. Uses the real ITIP Starlark rule to verify both GAP and
+ * (AppraisalFinding) → Archetype schemas. Uses the real OIP Starlark rule to verify both GAP and
  * COVERED appraisal cases end-to-end.
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class ItipGovernanceAppraisalIT {
+class OipGovernanceAppraisalIT {
 
   private static final ObjectMapper MAPPER = new ObjectMapper();
 
@@ -59,7 +59,7 @@ class ItipGovernanceAppraisalIT {
   static final UUID INTERACTION_ASC_ID = UUID.fromString("00000001-0001-0001-0001-00000000bb01");
 
   /**
-   * The real ITIP Starlark rule for DIRECTIVE_NORM_OPERATIONALIZATION — copied verbatim from
+   * The real OIP Starlark rule for DIRECTIVE_NORM_OPERATIONALIZATION — copied verbatim from
    * Historical source: gsm/archive/meta-governance/ItDirectiveNormOperationalization.mechanism.json
    */
   static final String STARLARK_RULE =
@@ -419,7 +419,7 @@ class ItipGovernanceAppraisalIT {
       asc.put("version", 1);
       asc.put("status", "ACTIVE");
 
-      // Statement IS the archetype schema — matches ITIP's AppraisalTrigger.Archetype
+      // Statement IS the archetype schema — matches OIP's AppraisalTrigger.Archetype
       ObjectNode schema = MAPPER.createObjectNode();
       schema.put("title", "AppraisalTrigger");
       schema.put("type", "object");
@@ -453,7 +453,7 @@ class ItipGovernanceAppraisalIT {
       asc.put("version", 1);
       asc.put("status", "ACTIVE");
 
-      // Statement IS the archetype schema — matches ITIP's AppraisalFinding.Archetype
+      // Statement IS the archetype schema — matches OIP's AppraisalFinding.Archetype
       ObjectNode schema = MAPPER.createObjectNode();
       schema.put("title", "AppraisalFinding");
       schema.put("type", "object");

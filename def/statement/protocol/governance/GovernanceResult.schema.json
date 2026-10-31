@@ -2,7 +2,7 @@
   "$schema": "gsmarc://gsm/Archetype/v1",
   "$id": "gsmarc://ops/protocols/governance/GovernanceResult/v1",
   "title": "GovernanceResult",
-  "description": "Types the data payload flowing through Governance Effectors/Receptors when the payload is a governance result message. A governance result conveys the outcome of a governance evaluation — pass, warning, or failure — along with optional finding references. Extending archetypes add domain-specific result shapes via $ref/allOf composition. Source: ITIP Meta-Governance Ontology; GSM Directive/Norm/Ascription governance grammar.",
+  "description": "Types the data payload flowing through Governance Effectors/Receptors when the payload is a governance result message. A governance result conveys the outcome of a governance evaluation — pass, warning, or failure — along with optional finding references. Extending archetypes add domain-specific result shapes via $ref/allOf composition. Source: OIP Meta-Governance Ontology; GSM Directive/Norm/Ascription governance grammar.",
   "type": "object",
   "required": [
     "resultType",
@@ -17,7 +17,7 @@
         "COMPLIANCE_RESULT",
         "SOURCING_RESULT"
       ],
-      "description": "Governance result discriminator. EVALUATION_RESULT — outcome of an evaluation cycle (rule execution against a subject). COMPLIANCE_RESULT — aggregated compliance posture for a governed entity under a framework. SOURCING_RESULT — outcome of a ontology sourcing operation (success/partial/failure). Source: ITIP meta-governance; GSM Ascription lifecycle.",
+      "description": "Governance result discriminator. EVALUATION_RESULT — outcome of an evaluation cycle (rule execution against a subject). COMPLIANCE_RESULT — aggregated compliance posture for a governed entity under a framework. SOURCING_RESULT — outcome of a ontology sourcing operation (success/partial/failure). Source: OIP meta-governance; GSM Ascription lifecycle.",
       "$gsm:identityBound": true,
       "$gsm:queryable": true
     },
@@ -28,14 +28,14 @@
         "WARN",
         "FAIL"
       ],
-      "description": "Tri-state governance outcome. PASS — all evaluated norms/directives satisfied. WARN — non-blocking findings detected (informational or advisory). FAIL — blocking findings detected (compliance breach). Source: ITIP evaluation model; AppraisalFinding severity semantics.",
+      "description": "Tri-state governance outcome. PASS — all evaluated norms/directives satisfied. WARN — non-blocking findings detected (informational or advisory). FAIL — blocking findings detected (compliance breach). Source: OIP evaluation model; AppraisalFinding severity semantics.",
       "$gsm:queryable": true
     },
     "subjectRef": {
       "type": "string",
       "format": "uri",
       "minLength": 1,
-      "description": "URI reference to the governance subject that was evaluated (e.g., 'gsmarc://tenant/definitions/{id}'). Source: GSM Ascription lifecycle; ITIP evaluation model.",
+      "description": "URI reference to the governance subject that was evaluated (e.g., 'gsmarc://tenant/definitions/{id}'). Source: GSM Ascription lifecycle; OIP evaluation model.",
       "$gsm:identityBound": true,
       "$gsm:queryable": true
     },
@@ -43,7 +43,7 @@
       "type": "string",
       "format": "uri",
       "minLength": 1,
-      "description": "URI reference to the governance ontology under which this result was produced. Source: ITIP ontology catalogue.",
+      "description": "URI reference to the governance ontology under which this result was produced. Source: OIP ontology catalogue.",
       "$gsm:queryable": true
     },
     "findingRefs": {
@@ -52,7 +52,7 @@
         "type": "string",
         "format": "uri"
       },
-      "description": "Ordered list of URI references to AppraisalFinding instances produced during this governance evaluation. Empty array when outcome is PASS with no advisory findings. Source: ITIP AppraisalFinding archetype."
+      "description": "Ordered list of URI references to AppraisalFinding instances produced during this governance evaluation. Empty array when outcome is PASS with no advisory findings. Source: OIP AppraisalFinding archetype."
     }
   },
   "unevaluatedProperties": false
