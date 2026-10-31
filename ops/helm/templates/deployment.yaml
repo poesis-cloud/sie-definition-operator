@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "sie-operator.fullname" . }}
+  name: {{ include "sie-definition-operator.fullname" . }}
   labels:
-    app: {{ include "sie-operator.fullname" . }}
+    app: {{ include "sie-definition-operator.fullname" . }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "sie-operator.fullname" . }}
+      app: {{ include "sie-definition-operator.fullname" . }}
   template:
     metadata:
       labels:
-        app: {{ include "sie-operator.fullname" . }}
+        app: {{ include "sie-definition-operator.fullname" . }}
     spec:
       containers:
         - name: cp

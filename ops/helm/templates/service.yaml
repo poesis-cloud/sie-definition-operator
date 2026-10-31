@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "sie-operator.fullname" . }}
+  name: {{ include "sie-definition-operator.fullname" . }}
 spec:
   type: {{ .Values.service.type }}
   selector:
-    app: {{ include "sie-operator.fullname" . }}
+    app: {{ include "sie-definition-operator.fullname" . }}
   ports:
     - name: http
       port: {{ .Values.service.port }}

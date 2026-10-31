@@ -1,7 +1,7 @@
-# SIE Operator
+# SIE Definition Operator
 
-[![CI](https://github.com/poesis-cloud/sie-operator/actions/workflows/ci.yaml/badge.svg)](https://github.com/poesis-cloud/sie-operator/actions/workflows/ci.yaml)
-[![Release](https://img.shields.io/github/v/release/poesis-cloud/sie-operator)](https://github.com/poesis-cloud/sie-operator/releases/latest)
+[![CI](https://github.com/poesis-cloud/sie-definition-operator/actions/workflows/ci.yaml/badge.svg)](https://github.com/poesis-cloud/sie-definition-operator/actions/workflows/ci.yaml)
+[![Release](https://img.shields.io/github/v/release/poesis-cloud/sie-definition-operator)](https://github.com/poesis-cloud/sie-definition-operator/releases/latest)
 [![Coverage gate](https://img.shields.io/badge/JaCoCo-%E2%89%A595%25%20instruction%20coverage%20enforced-brightgreen)](pom.xml)
 [![Java](https://img.shields.io/badge/Java-21-orange)](pom.xml)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5-6DB33F)](pom.xml)
@@ -15,13 +15,13 @@ The Operator resolves Mechanism definitions from the Definition Manager, validat
 
 ## Architecture: A Mechanism Runtime Engine
 
-The SIE Operator is architecturally analogous to a language runtime (JVM, CLR, BEAM). Instead of executing bytecode or script functions, it executes GSM **Mechanisms** — causal logic units whose behavior is defined by Starlark rules and whose I/O is typed by Archetype schemas.
+The SIE Definition Operator is architecturally analogous to a language runtime (JVM, CLR, BEAM). Instead of executing bytecode or script functions, it executes GSM **Mechanisms** — causal logic units whose behavior is defined by Starlark rules and whose I/O is typed by Archetype schemas.
 
 ### Runtime Concepts Glossary
 
 The Operator's concepts are named after well-established runtime patterns:
 
-| Runtime Concept                        | SIE Operator                  | Description                                                                                                                                                                                                                                                                                                                                    |
+| Runtime Concept                        | SIE Definition Operator       | Description                                                                                                                                                                                                                                                                                                                                    |
 | -------------------------------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Frame** (JVM §2.6, WASM `callframe`) | **Operation Frame**           | Resolved execution context for a single Mechanism: the Mechanism itself, its Ports (Effectors/Receptors), data Archetypes, and active Interactions. Created per invocation, discarded after completion.                                                                                                                                        |
 | **Linker / Symbol Resolver**           | **Frame Resolution**          | Queries the Definition Manager to discover and validate a Mechanism's ports, archetypes, and interaction wiring — analogous to dynamic linking resolving symbolic references into concrete bindings.                                                                                                                                           |
@@ -119,12 +119,12 @@ All protocols are **structurally identical**: same dispatcher SPI (`MechanismEff
 - **Operator-internal protocols** live in this repo under `def/statement/protocol/` — Relay (in-memory causal propagation) and Governance (DM ↔ Operator events). These are part of the Operator runtime contract.
 - **Application protocols** (HTTP, Kafka, AMQP, gRPC, GraphQL, JDBC, WebSocket) are owned by **OIP** under `gsm-ontology/ontologies/{family}/` (the standalone, public `gsm-ontology` repo). They describe how applications interact with the world and are catalogued alongside other OIP ontologies (TOGAF, ISO 25000, GDPR…). The Operator vendors HTTP at build time via a Maven `<resource>` directive pointing to OIP, so `StructureSeedRunner` can still register them at startup.
 
-| Protocol                                        | Owner        | Boundary           | Analogy            | Description                                                                                           |
-| ----------------------------------------------- | ------------ | ------------------ | ------------------ | ----------------------------------------------------------------------------------------------------- |
-| **HTTP**                                        | OIP         | Network (external) | Syscall / FFI      | Crosses the runtime boundary to reach external targets via HTTP requests/responses.                   |
-| **Relay**                                       | sie-operator | In-memory (native) | Causal propagation | Propagates causal signals between mechanisms within an operation chain — no network boundary crossed. |
-| **Governance**                                  | sie-operator | In-memory (native) | DM ↔ Operator     | Governance event/result exchange between Definition Manager and Operator.                             |
-| **Kafka, AMQP, gRPC, GraphQL, JDBC, WebSocket** | OIP         | Network (external) | Various            | Reserved ontology directories; archetype quads to be authored when first sourced.                     |
+| Protocol                                        | Owner                   | Boundary           | Analogy            | Description                                                                                           |
+| ----------------------------------------------- | ----------------------- | ------------------ | ------------------ | ----------------------------------------------------------------------------------------------------- |
+| **HTTP**                                        | OIP                     | Network (external) | Syscall / FFI      | Crosses the runtime boundary to reach external targets via HTTP requests/responses.                   |
+| **Relay**                                       | sie-definition-operator | In-memory (native) | Causal propagation | Propagates causal signals between mechanisms within an operation chain — no network boundary crossed. |
+| **Governance**                                  | sie-definition-operator | In-memory (native) | DM ↔ Operator     | Governance event/result exchange between Definition Manager and Operator.                             |
+| **Kafka, AMQP, gRPC, GraphQL, JDBC, WebSocket** | OIP                     | Network (external) | Various            | Reserved ontology directories; archetype quads to be authored when first sourced.                     |
 
 ### Archetype Quad Pattern
 
@@ -253,7 +253,7 @@ The Operator validates at four levels, each corresponding to a phase in the exec
 ## Project Structure
 
 ```
-sie-operator/
+sie-definition-operator/
 ├── def/statement/                      # GSM statement definitions
 │   ├── OperationRequest.schema.json     # Receptor data archetype (operator input contract)
 │   ├── OperationResponse.schema.json   # Effector data archetype (operator output contract)

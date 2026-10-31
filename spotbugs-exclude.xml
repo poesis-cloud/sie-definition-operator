@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  SpotBugs exclusion filter for sie-operator.
+  SpotBugs exclusion filter for sie-definition-operator.
 
   EI_EXPOSE_REP / EI_EXPOSE_REP2 on Java records with Map/Module fields:
   Record accessors are compiler-generated and cannot be overridden or annotated.

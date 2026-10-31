@@ -45,7 +45,7 @@ deploy-check:
 dev-up:
 	@$(MAKE) ensure-runtime
 	kubectl get ns $(NAMESPACE) >/dev/null 2>&1 || kubectl create ns $(NAMESPACE) >/dev/null
-	helm upgrade --install sie-operator $(OP_CHART) -n $(NAMESPACE) --create-namespace --wait --timeout 5m0s \
+	helm upgrade --install sie-definition-operator $(OP_CHART) -n $(NAMESPACE) --create-namespace --wait --timeout 5m0s \
 		-f $(OP_CHART)/environments/dev/values.yaml
 	@echo "Operator deployed to dev."
 
@@ -55,7 +55,7 @@ dev-down:
 		kill $$PID 2>/dev/null || true; \
 		echo "Stopped process on port 8081 (PID $$PID)"; \
 	fi
-	helm uninstall sie-operator -n $(NAMESPACE) || true
+	helm uninstall sie-definition-operator -n $(NAMESPACE) || true
 
 run-api:
 	DEFINITION_MANAGER_URL="$(DEFINITION_MANAGER_URL)" \
@@ -63,7 +63,7 @@ run-api:
 
 prod-deploy:
 	@$(MAKE) deploy-check
-	helm upgrade --install sie-operator $(OP_CHART) -n $(NAMESPACE) --create-namespace --wait --timeout 10m0s \
+	helm upgrade --install sie-definition-operator $(OP_CHART) -n $(NAMESPACE) --create-namespace --wait --timeout 10m0s \
 		-f $(OP_ENV_FILE) \
 		--set image.repository="$${IMAGE_REPOSITORY}" \
 		--set image.tag="$${IMAGE_TAG}"

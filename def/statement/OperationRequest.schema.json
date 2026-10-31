@@ -2,7 +2,7 @@
   "$schema": "gsmarc://gsm/Archetype/v1",
   "$id": "gsmarc://ops/OperationRequest/v1",
   "title": "OperationRequest",
-  "description": "SIE Operator receptor archetype — operation request contract. Defines the shape of an operation trigger received by the operator's run-operation mechanism. Client mechanisms wire an Effector to this receptor via an Interaction to declare operability.",
+  "description": "SIE Definition Operator receptor archetype — operation request contract. Defines the shape of an operation trigger received by the operator's run-operation mechanism. Client mechanisms wire an Effector to this receptor via an Interaction to declare operability.",
   "type": "object",
   "required": [ "mechanismAscriptionId", "operationInput" ],
   "properties": {

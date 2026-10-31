@@ -8,7 +8,7 @@ import java.util.UUID;
 
 @Schema(
     name = "OperationRequest",
-    description = "Request to execute a mechanism operation against the SIE Operator")
+    description = "Request to execute a mechanism operation against the SIE Definition Operator")
 public record OperationRequestDto(
     @NotNull
         @Schema(

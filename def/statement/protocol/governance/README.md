@@ -4,7 +4,7 @@ Governance protocol statements for the OIP meta-governance ontology.
 
 ## Overview
 
-The governance protocol defines how governance events and results flow through the SIE Operator's governance fabric. It follows the standard GSM protocol quad pattern (Data → Effector → Receptor → Interaction).
+The governance protocol defines how governance events and results flow through the SIE Definition Operator's governance fabric. It follows the standard GSM protocol quad pattern (Data → Effector → Receptor → Interaction).
 
 ## Protocol Quads
 

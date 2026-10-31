@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service;
 /**
  * Resolves the full GSM operation frame for a Mechanism: fetches its ports (receptors/effectors)
  * and their data archetypes from the Definition Manager. Validates that the mechanism is wired to
- * the SIE Operator's run-operation mechanism via an Interaction (operability check).
+ * the SIE Definition Operator's run-operation mechanism via an Interaction (operability check).
  */
 @Service
 public class OperationFrameResolutionService {
@@ -72,9 +72,10 @@ public class OperationFrameResolutionService {
   }
 
   /**
-   * Validates that the client mechanism is wired to the SIE Operator's run-operation mechanism. A
-   * valid wiring is an active Interaction from one of the mechanism's effectors to the operator's
-   * receptor. The operator's receptor ID is resolved on demand from the Definition Manager.
+   * Validates that the client mechanism is wired to the SIE Definition Operator's run-operation
+   * mechanism. A valid wiring is an active Interaction from one of the mechanism's effectors to the
+   * operator's receptor. The operator's receptor ID is resolved on demand from the Definition
+   * Manager.
    */
   private void validateOperability(
       UUID mechanismAscriptionId, List<EffectorAscriptionDto> effectors) {
@@ -100,7 +101,7 @@ public class OperationFrameResolutionService {
     throw new OperationFrameResolutionException(
         "Mechanism "
             + mechanismAscriptionId
-            + " is not wired to the SIE Operator's run-operation mechanism — "
+            + " is not wired to the SIE Definition Operator's run-operation mechanism — "
             + "no Interaction found from any of its effectors to the operator's receptor "
             + operatorReceptorId);
   }
@@ -110,14 +111,14 @@ public class OperationFrameResolutionService {
         client.findAscription("MECHANISM", Map.of("function", "run-operation"));
     if (mechanism.isEmpty()) {
       throw new OperationFrameResolutionException(
-          "SIE Operator mechanism (function=run-operation) not found on Definition Manager");
+          "SIE Definition Operator mechanism (function=run-operation) not found on Definition Manager");
     }
     UUID mechanismId = UUID.fromString(mechanism.get().path("id").asText());
 
     List<ReceptorAscriptionDto> receptors = client.findReceptors(mechanismId);
     if (receptors.isEmpty()) {
       throw new OperationFrameResolutionException(
-          "SIE Operator mechanism " + mechanismId + " has no receptor");
+          "SIE Definition Operator mechanism " + mechanismId + " has no receptor");
     }
     return receptors.getFirst().id();
   }
