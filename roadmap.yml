@@ -1,5 +1,5 @@
 scope: product
-name: Definition Operator
+name: SIE Definition Operator
 milestones:
   - version: v0.1.0
     current: true
